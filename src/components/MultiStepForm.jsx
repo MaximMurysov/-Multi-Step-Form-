@@ -2,6 +2,8 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import { steps } from "./main";
 import StepIndicator from "./StepIndicator";
+import FormResult from "./FormResult";
+import FormStep from "./FormStep";
 function MultiStepForm() {
   const [index, setIndex] = useState(0);
   const [formData, setFormData] = useState({});
@@ -38,31 +40,14 @@ function MultiStepForm() {
         <div className={styles.mutliStepForm}>
           <StepIndicator steps={steps} index={index} />
           {resultForm ? (
-            <div>
-              {Object.entries(formData).map(([key, elem]) => (
-                <div key={key}>
-                  <p>
-                    {key}: {elem}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <FormResult formData={formData} />
           ) : (
-            <div className={styles.formData}>
-              <h2>{steps[index].heading}</h2>
-              {steps[index].fields.map((elem, i) => (
-                <div key={i}>
-                  <p>{elem}</p>
-                  <input
-                    type="text"
-                    name={elem}
-                    className={styles.input}
-                    value={formData[elem] || ""}
-                    onChange={handleChange}
-                  />
-                </div>
-              ))}
-            </div>
+            <FormStep
+              steps={steps}
+              index={index}
+              formData={formData}
+              handleChange={handleChange}
+            />
           )}
           {resultForm ? (
             <button className={styles.buttonNext} onClick={handleReset}>
