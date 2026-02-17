@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import { useState } from "react";
 import { steps } from "./main";
-
+import StepIndicator from "./StepIndicator";
 function MultiStepForm() {
   const [index, setIndex] = useState(0);
   const [formData, setFormData] = useState({});
@@ -29,21 +29,14 @@ function MultiStepForm() {
   };
   const handleReset = () => {
     setFormData({});
+    setIndex(0);
     setResultForm(false);
   };
   return (
     <div className={styles.mutliStep}>
       <div className={styles.mutliStepContainer}>
         <div className={styles.mutliStepForm}>
-          <div className={styles.mutliStepFormPages}>
-            {steps.map((_, i) => (
-              <h1
-                className={`${index >= i ? styles.active : styles.innactive} `}
-              >
-                {i + 1}
-              </h1>
-            ))}
-          </div>
+          <StepIndicator steps={steps} index={index} />
           {resultForm ? (
             <div>
               {Object.entries(formData).map(([key, elem]) => (
