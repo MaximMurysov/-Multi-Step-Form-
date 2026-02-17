@@ -4,6 +4,7 @@ import { steps } from "./main";
 import StepIndicator from "./StepIndicator";
 import FormResult from "./FormResult";
 import FormStep from "./FormStep";
+import FormNavigation from "./FormNavigation";
 function MultiStepForm() {
   const [index, setIndex] = useState(0);
   const [formData, setFormData] = useState({});
@@ -49,20 +50,12 @@ function MultiStepForm() {
               handleChange={handleChange}
             />
           )}
-          {resultForm ? (
-            <button className={styles.buttonNext} onClick={handleReset}>
-              Try again
-            </button>
-          ) : (
-            <div className={styles.activeButtons}>
-              <button className={styles.buttonNext} onClick={handleBack}>
-                Back
-              </button>
-              <button className={styles.buttonNext} onClick={handleNext}>
-                Next
-              </button>
-            </div>
-          )}
+          <FormNavigation
+            resultForm={resultForm}
+            handleBack={handleBack}
+            handleReset={handleReset}
+            handleNext={handleNext}
+          />
         </div>
       </div>
     </div>
