@@ -9,22 +9,33 @@
   justify-content: center;
   height: 100vh;
 
-  background-color: rgba(0, 0, 255, 0.473);
+  background-color: #9b7eda;
 }
 .mutliStepContainer {
   width: 500px;
   height: 400px;
   background-color: whitesmoke;
+  border-radius: 10px;
   padding: 20px 40px;
 }
 .mutliStepFormPages {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  justify-content: space-around;
 }
-.page {
-  background-color: blue;
+.active {
+  background-color: #9b7eda;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: whitesmoke;
+}
+.innactive {
+  background-color: #727b7f;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -40,4 +51,80 @@
   flex-direction: column;
   height: 100%;
   justify-content: space-around;
+  font-size: 20px;
+}
+.formData {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.input {
+  color: black;
+  border: 2px solid #8707ff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  background: transparent;
+  max-width: 190px;
+}
+.input:active {
+  box-shadow: 2px 2px 15px #8707ff inset;
+}
+.activeButtons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.buttonNext {
+  --purple: #9b7eda;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  line-height: 1.4em;
+  border: 2px solid var(--purple);
+  background: linear-gradient(
+    to right,
+    rgba(155, 126, 218, 0.1) 1%,
+    transparent 40%,
+    transparent 60%,
+    rgba(155, 126, 218, 0.1) 100%
+  );
+  color: var(--purple);
+  box-shadow:
+    inset 0 0 10px rgba(155, 126, 218, 0.4),
+    0 0 9px 3px rgba(155, 126, 218, 0.1);
+}
+
+.buttonNext:hover {
+  color: #bfa3f3;
+  box-shadow:
+    inset 0 0 10px rgba(155, 126, 218, 0.6),
+    0 0 9px 3px rgba(155, 126, 218, 0.2);
+}
+
+.buttonNext:before {
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 4em;
+  height: 100%;
+  top: 0;
+  transition: transform 0.4s ease-in-out;
+  background: linear-gradient(
+    to right,
+    transparent 1%,
+    rgba(155, 126, 218, 0.1) 40%,
+    rgba(155, 126, 218, 0.1) 60%,
+    transparent 100%
+  );
+}
+
+.buttonNext:hover:before {
+  transform: translateX(15em);
 }
