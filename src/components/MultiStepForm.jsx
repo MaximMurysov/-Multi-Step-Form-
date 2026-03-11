@@ -6,7 +6,7 @@ import FormResult from "./FormResult";
 import FormStep from "./FormStep";
 import FormNavigation from "./FormNavigation";
 function MultiStepForm() {
-  const [index, setIndex] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({});
   const [resultForm, setResultForm] = useState(false);
   const handleChange = (e) => {
@@ -14,38 +14,38 @@ function MultiStepForm() {
     setFormData({ ...formData, [name]: value });
   };
   const handleNext = () => {
-    const currentFields = steps[index].fields;
+    const currentFields = steps[activeStep].fields;
     const allCurrentFiels = currentFields.every(
       (elem) => formData[elem] && formData[elem].trim() !== "",
     );
     if (!allCurrentFiels) {
       return;
     }
-    if (index < steps.length - 1) {
-      setIndex(index + 1);
+    if (activeStep < steps.length - 1) {
+      setActiveStep(activeStep + 1);
     } else {
       setResultForm(true);
     }
   };
   const handleBack = () => {
-    setIndex(index >= 1 ? index - 1 : index);
+    setActiveStep(activeStep >= 1 ? activeStep - 1 : activeStep);
   };
   const handleReset = () => {
     setFormData({});
-    setIndex(0);
+    setActiveStep(0);
     setResultForm(false);
   };
   return (
     <div className={styles.mutliStep}>
       <div className={styles.mutliStepContainer}>
         <div className={styles.mutliStepForm}>
-          <StepIndicator steps={steps} index={index} />
+          <StepIndicator steps={steps} activeStep={activeStep} />
           {resultForm ? (
             <FormResult formData={formData} />
           ) : (
             <FormStep
               steps={steps}
-              index={index}
+              activeStep={activeStep}
               formData={formData}
               handleChange={handleChange}
             />
