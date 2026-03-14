@@ -1,15 +1,19 @@
 import styles from "./styles.module.css";
+import React, { type ChangeEvent } from "react";
 import { useState } from "react";
 import { steps } from "./main";
 import StepIndicator from "./StepIndicator";
 import FormResult from "./FormResult";
 import FormStep from "./FormStep";
 import FormNavigation from "./FormNavigation";
+
+type FormData = Record<string, string>;
+
 function MultiStepForm() {
   const [activeStep, setActiveStep] = useState(0);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState<FormData>({});
   const [resultForm, setResultForm] = useState(false);
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -35,6 +39,11 @@ function MultiStepForm() {
     setActiveStep(0);
     setResultForm(false);
   };
+  const handleEnter = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === "Enter") {
+      handleNext();
+    }
+  };
   return (
     <div className={styles.mutliStep}>
       <div className={styles.mutliStepContainer}>
@@ -48,6 +57,7 @@ function MultiStepForm() {
               activeStep={activeStep}
               formData={formData}
               handleChange={handleChange}
+              handleEnter={handleEnter}
             />
           )}
           <FormNavigation

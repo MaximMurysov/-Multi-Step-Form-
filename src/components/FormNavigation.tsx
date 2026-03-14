@@ -1,6 +1,18 @@
 import styles from "./styles.module.css";
 
-function FormNavigation({ resultForm, handleBack, handleNext, handleReset }) {
+interface FormNavigationProps {
+  resultForm: boolean;
+  handleBack: () => void;
+  handleNext: () => void;
+  handleReset: () => void;
+}
+
+function FormNavigation({
+  resultForm,
+  handleBack,
+  handleNext,
+  handleReset,
+}: FormNavigationProps) {
   return (
     <>
       {resultForm ? (

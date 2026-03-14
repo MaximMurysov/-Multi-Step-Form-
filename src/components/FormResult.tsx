@@ -1,4 +1,8 @@
-function FormResult({ formData }) {
+interface FormResultProps {
+  formData: Record<string, string>;
+}
+
+function FormResult({ formData }: FormResultProps) {
   return (
     <div>
       {Object.entries(formData).map(([key, elem]) => (

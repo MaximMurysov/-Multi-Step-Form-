@@ -1,5 +1,21 @@
+import React, { type ChangeEvent } from "react";
 import styles from "./styles.module.css";
-function FormStep({ steps, activeStep, formData, handleChange }) {
+
+interface FormStepProps {
+  steps: { heading: string; fields: string[] }[];
+  activeStep: number;
+  formData: Record<string, string>;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleEnter: (e: React.KeyboardEvent<HTMLElement>) => void;
+}
+
+function FormStep({
+  steps,
+  activeStep,
+  formData,
+  handleChange,
+  handleEnter,
+}: FormStepProps) {
   return (
     <div className={styles.formData}>
       <h2>{steps[activeStep].heading}</h2>
@@ -12,6 +28,7 @@ function FormStep({ steps, activeStep, formData, handleChange }) {
             className={styles.input}
             value={formData[elem] || ""}
             onChange={handleChange}
+            onKeyDown={handleEnter}
           />
         </div>
       ))}

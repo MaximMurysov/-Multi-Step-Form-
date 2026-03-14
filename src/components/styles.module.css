@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-/* Фон страницы и центрирование */
 .mutliStep {
   min-height: 100vh;
   display: flex;
@@ -22,7 +21,6 @@
     sans-serif;
 }
 
-/* Карточка формы */
 .mutliStepContainer {
   width: 100%;
   max-width: 520px;
@@ -36,7 +34,6 @@
     0 0 0 1px rgba(15, 23, 42, 0.02);
 }
 
-/* Внутренний layout */
 .mutliStepForm {
   display: flex;
   flex-direction: column;
@@ -45,7 +42,6 @@
   font-size: 16px;
 }
 
-/* Индикатор шагов */
 .mutliStepFormPages {
   display: flex;
   justify-content: center;
@@ -104,7 +100,6 @@
   background-color: #e5e7eb;
 }
 
-/* Блок с полями формы */
 .formData {
   display: flex;
   flex-direction: column;
@@ -156,7 +151,6 @@
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.16);
 }
 
-/* Кнопки навигации */
 .activeButtons {
   margin-top: 8px;
   display: flex;
@@ -165,7 +159,6 @@
   gap: 12px;
 }
 
-/* Кнопка Next/Back/Try again */
 .buttonNext {
   cursor: pointer;
   font-size: 14px;
@@ -202,7 +195,6 @@
   box-shadow: none;
 }
 
-/* Результаты формы */
 .formResult {
   margin-top: 4px;
   display: flex;
@@ -217,45 +209,4 @@
 .formResult p {
   font-size: 14px;
   color: #374151;
-}
-
-/* Адаптивность */
-@media (max-width: 600px) {
-  .mutliStepContainer {
-    padding: 18px 16px;
-    min-height: auto;
-  }
-
-  .mutliStepForm {
-    gap: 18px;
-  }
-
-  .mutliStepFormPages {
-    gap: 4px;
-  }
-
-  .active,
-  .innactive {
-    width: 32px;
-    height: 32px;
-    font-size: 13px;
-  }
-
-  .lineActive,
-  .lineInnactive {
-    width: 40px;
-  }
-
-  .formData {
-    padding: 12px 12px;
-  }
-
-  .buttonNext {
-    width: 100%;
-    text-align: center;
-  }
-
-  .activeButtons {
-    flex-direction: column-reverse;
-  }
 }

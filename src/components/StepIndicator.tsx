@@ -1,10 +1,18 @@
 import styles from "./styles.module.css";
+interface Steps {
+  heading: string;
+  fields: string[];
+}
+interface StepIndicatorProps {
+  steps: Steps[];
+  activeStep: number;
+}
 
-function StepIndicator({ steps, activeStep }) {
+function StepIndicator({ steps, activeStep }: StepIndicatorProps) {
   return (
     <div className={styles.mutliStepFormPages}>
       {steps.map((_, i) => (
-        <div className={styles.pages}>
+        <div className={styles.pages} key={i}>
           <div
             className={`${activeStep >= i ? styles.active : styles.innactive} `}
           >
